@@ -1,0 +1,16 @@
+<form [formGroup]="form" (ngSubmit)="salvar()">
+    <label>Nome:</label>
+    <input type="text" formControlName="nome" placeholder="Produto" />
+    <div *ngIf="form.get('nome')?.invalid && form.get('nome')?.touched">
+        Nome é obrigatório e deve ter pelo menos 3 caracteres.
+    </div>
+
+    <label>Preço:</label>
+    <input type="number" formControlName="preco" placeholder="Preço"/>
+    <div *ngIf="form.get('preco')?.invalid && form.get('preco')?.touched">
+        Preço é obrigatório e deve ser maior que zero.
+    </div>
+
+    <button type="submit" [disabled]="form.invalid">Salvar</button>
+</form>
+
