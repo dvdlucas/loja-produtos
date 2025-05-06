@@ -17,5 +17,10 @@ export class ProdutoService {
   cadastrar(produto: any): Observable<any> {
   return this.http.post('http://localhost:3000/produtos', produto);
   }
+
+  excluir(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}`);
+  }
+
 }
 

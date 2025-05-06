@@ -2,5 +2,9 @@
 <ul>
   <li *ngFor="let produto of produtos">
     {{ produto.nome }} - R$ {{ produto.preco }}
+    <button (click)="excluirProduto(id)">Excluir Produto</button>
   </li>
 </ul>
+<button routerLink="/">Voltar</button>
+<button routerLink="/produtos/novo">Cadastrar Novo Produto</button>
+<button (click)="atualizarLista()">Atualizar Lista</button>

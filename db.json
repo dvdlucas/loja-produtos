@@ -1,6 +1,29 @@
 {
   "produtos": [
-    { "id": 1, "nome": "Notebook", "preco": 3500 },
-    { "id": 2, "nome": "Mouse", "preco": 80 }
+    {
+      "id": "1",
+      "nome": "Notebook",
+      "preco": 3500
+    },
+    {
+      "id": "2",
+      "nome": "Mouse",
+      "preco": 80
+    },
+    {
+      "id": "d15a",
+      "nome": "Caneta",
+      "preco": 40
+    },
+    {
+      "id": "b69c",
+      "nome": "Celular",
+      "preco": 1500
+    },
+    {
+      "id": "0994",
+      "nome": "Notebook",
+      "preco": 4000
+    }
   ]
 }
