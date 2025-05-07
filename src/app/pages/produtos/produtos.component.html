@@ -1,10 +1,11 @@
 <h2>Lista de Produtos</h2>
-<ul>
-  <li *ngFor="let produto of produtos">
-    {{ produto.nome }} - R$ {{ produto.preco }}
-    <button (click)="excluirProduto(id)">Excluir Produto</button>
+<ul class="list-group">
+  <li *ngFor="let produto of produtos" class="list-group-item d-flex justify-content-between align-items-center">
+    <p>{{ produto.nome }}</p>
+    <p class="badge bg-primary rounded-pill">R$ {{ produto.preco | number:'1.2-2' }}</p>
   </li>
 </ul>
-<button routerLink="/">Voltar</button>
-<button routerLink="/produtos/novo">Cadastrar Novo Produto</button>
-<button (click)="atualizarLista()">Atualizar Lista</button>
+
+<button class="btn" routerLink="/">Voltar</button>
+<button class="btn" routerLink="/produtos/novo">Cadastrar Novo Produto</button>
+<button class="btn" (click)="atualizarLista()">Atualizar Lista</button>
