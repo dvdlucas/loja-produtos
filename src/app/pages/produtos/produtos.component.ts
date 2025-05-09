@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common'; // 
 import { ProdutoService } from '../../services/produto.service';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-produtos',
@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
 export class ProdutosComponent implements OnInit {
   produtos: any[] = [];
 
-  constructor(private produtoService: ProdutoService) {}
+  constructor(private produtoService: ProdutoService, private router: Router) {}
 
   ngOnInit(): void {
     this.produtoService.listar().subscribe(data => {
@@ -20,15 +20,23 @@ export class ProdutosComponent implements OnInit {
     });
   }
     atualizarLista() {
- 
     this.produtoService.listar().subscribe(( data ) => {
       this.produtos = data;
     });
   }
 
   excluirProduto(id: number) {
-    this.produtoService.excluir(id).subscribe(() => {
-      this.atualizarLista();
-    });
+    if (confirm('Tem certeza que deseja excluir este produto?')) {
+      this.produtoService.excluir(id).subscribe(() => {
+        alert('Produto excluído com sucesso!');
+        this.atualizarLista();
+      }, error => {
+        alert('Erro ao excluir produto: ' + error.message);
+      });
+    }
+  }
+
+  editarProduto(id: number) {
+    this.router.navigate(['/produtos/editar', id]);
   }
 }

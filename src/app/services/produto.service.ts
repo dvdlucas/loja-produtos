@@ -22,5 +22,13 @@ export class ProdutoService {
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
 
+  editar(id : number, produto: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/${id}`, produto);
+  }
+
+  buscarPorId(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/${id}`);
+  }
+
 }
 

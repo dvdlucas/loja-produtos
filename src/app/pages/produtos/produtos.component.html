@@ -1,11 +1,19 @@
-<h2>Lista de Produtos</h2>
-<ul class="list-group">
-  <li *ngFor="let produto of produtos" class="list-group-item d-flex justify-content-between align-items-center">
-    <p>{{ produto.nome }}</p>
-    <p class="badge bg-primary rounded-pill">R$ {{ produto.preco | number:'1.2-2' }}</p>
-  </li>
-</ul>
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card p-5 shadow-lg w-100" style="max-width: 600px;">
+    <h4 class="mb-4 text-center">Editar Produto</h4>
 
-<button class="btn" routerLink="/">Voltar</button>
-<button class="btn" routerLink="/produtos/novo">Cadastrar Novo Produto</button>
-<button class="btn" (click)="atualizarLista()">Atualizar Lista</button>
+    <form [formGroup]="form" (ngSubmit)="editar()" class="mt-4">
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" id="nome" class="form-control" formControlName="nome">
+      </div>
+
+      <div class="mb-3">
+        <label for="preco" class="form-label">Preço</label>
+        <input type="number" id="preco" class="form-control" formControlName="preco" step="0.01">
+      </div>
+
+      <button type="submit" class="btn btn-success w-100" [disabled]="form.invalid">Salvar</button>
+    </form>
+  </div>
+</div>
